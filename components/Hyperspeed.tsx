@@ -752,7 +752,7 @@ const Hyperspeed = ({
       colors: any;
       speed: number[];
       fade: THREE.Vector2;
-      mesh: THREE.Mesh;
+      mesh!: THREE.Mesh;
 
       constructor(webgl: App, options: any, colors: any, speed: number[], fade: THREE.Vector2) {
         this.webgl = webgl;
@@ -915,7 +915,7 @@ const Hyperspeed = ({
     class LightsSticks {
       webgl: App;
       options: any;
-      mesh: THREE.Mesh;
+      mesh!: THREE.Mesh;
 
       constructor(webgl: App, options: any) {
         this.webgl = webgl;
@@ -1047,9 +1047,9 @@ const Hyperspeed = ({
       webgl: App;
       options: any;
       uTime: { value: number };
-      leftRoadWay: THREE.Mesh;
-      rightRoadWay: THREE.Mesh;
-      island: THREE.Mesh;
+      leftRoadWay!: THREE.Mesh;
+      rightRoadWay!: THREE.Mesh;
+      island!: THREE.Mesh;
 
       constructor(webgl: App, options: any) {
         this.webgl = webgl;
