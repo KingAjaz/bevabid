@@ -859,7 +859,7 @@ const Hyperspeed = ({
       }
 
       update(time: number) {
-        this.mesh.material.uniforms.uTime.value = time;
+        (this.mesh.material as THREE.ShaderMaterial).uniforms.uTime.value = time;
       }
     }
 
@@ -988,7 +988,7 @@ const Hyperspeed = ({
       }
 
       update(time: number) {
-        this.mesh.material.uniforms.uTime.value = time;
+        (this.mesh.material as THREE.ShaderMaterial).uniforms.uTime.value = time;
       }
     }
 
