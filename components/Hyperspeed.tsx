@@ -845,7 +845,7 @@ const Hyperspeed = ({
           ) as any
         });
 
-        material.onBeforeCompile = (shader: THREE.Shader) => {
+        material.onBeforeCompile = (shader: any) => {
           shader.vertexShader = shader.vertexShader.replace(
             '#include <getDistortion_vertex>',
             options.distortion.getDistortion
@@ -974,7 +974,7 @@ const Hyperspeed = ({
           ) as any
         });
 
-        material.onBeforeCompile = (shader: THREE.Shader) => {
+        material.onBeforeCompile = (shader: any) => {
           shader.vertexShader = shader.vertexShader.replace(
             '#include <getDistortion_vertex>',
             options.distortion.getDistortion
@@ -1090,7 +1090,7 @@ const Hyperspeed = ({
           uniforms: Object.assign(uniforms, this.webgl.fogUniforms, options.distortion.uniforms)
         });
 
-        material.onBeforeCompile = (shader: THREE.Shader) => {
+        material.onBeforeCompile = (shader: any) => {
           shader.vertexShader = shader.vertexShader.replace(
             '#include <getDistortion_vertex>',
             options.distortion.getDistortion
