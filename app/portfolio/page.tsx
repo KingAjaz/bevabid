@@ -43,9 +43,9 @@ export default function PortfolioPage() {
           id: video.id,
           title: video.title,
           category: video.category,
-          thumbnail: video.thumbnail_url || '/api/placeholder/800/450',
+          thumbnail: video.thumbnail_url || null,
           videoUrl: video.video_url,
-          description: video.description || '',
+          description: video.description || null,
         }));
 
         setPortfolioItems(transformedData);
@@ -175,7 +175,9 @@ export default function PortfolioPage() {
                     <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary-red transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2">{item.description}</p>
+                    {item.description && (
+                      <p className="text-sm text-gray-600 line-clamp-2">{item.description}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
