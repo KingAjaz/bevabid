@@ -10,7 +10,7 @@ interface VideoModalProps {
     title: string;
     category: string;
     videoUrl: string;
-    description: string;
+    description: string | null;
   };
   onClose: () => void;
 }
@@ -63,7 +63,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <p className="text-white/60 mb-4">{video.title}</p>
-                  <p className="text-sm text-white/40">{video.description}</p>
+                  {video.description && <p className="text-sm text-white/40">{video.description}</p>}
                   <p className="text-xs text-white/30 mt-4">
                     Video URL not available
                   </p>
@@ -75,7 +75,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
           {/* Video Info */}
           <div className="mt-6 text-gray-900">
             <h3 className="text-2xl font-bold mb-2">{video.title}</h3>
-            <p className="text-gray-600">{video.description}</p>
+            {video.description && <p className="text-gray-600">{video.description}</p>}
             <span className="inline-block mt-4 px-3 py-1 bg-primary-red/20 text-primary-red text-xs font-semibold uppercase tracking-wider">
               {video.category}
             </span>
