@@ -53,7 +53,7 @@ export default function FeaturedShowcase() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
@@ -71,7 +71,7 @@ export default function FeaturedShowcase() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
               className="group relative overflow-hidden cursor-pointer"
@@ -120,7 +120,7 @@ export default function FeaturedShowcase() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="text-center mt-16"
         >
           <Link

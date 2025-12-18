@@ -112,7 +112,7 @@ export default function ServicesPage() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-8 text-gray-900">
@@ -139,7 +139,7 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.4 }}
                   className="scroll-mt-20"
                 >
                   <div
@@ -193,7 +193,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-8 text-gray-900">

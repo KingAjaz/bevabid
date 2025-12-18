@@ -117,7 +117,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <Link
@@ -148,7 +148,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             <h2 className="text-3xl font-bold mb-6 text-gray-900">Overview</h2>
             <p className="text-lg text-gray-700 leading-relaxed">{caseStudy.overview}</p>
@@ -163,7 +163,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             <h2 className="text-3xl font-bold mb-6 text-primary-red">The Challenge</h2>
             <p className="text-lg text-gray-700 leading-relaxed">{caseStudy.problem}</p>
@@ -178,7 +178,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Solution</h2>
             <p className="text-lg text-gray-700 leading-relaxed">{caseStudy.solution}</p>
@@ -193,7 +193,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
             className="mb-12"
           >
             <h2 className="text-3xl font-bold mb-6 text-primary-red">The Results</h2>
@@ -207,7 +207,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="p-6 bg-gray-50 border border-gray-200 text-center rounded-lg"
               >
                 <div className="text-3xl font-bold text-primary-red mb-2">{result.value}</div>
@@ -226,7 +226,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
               className="text-3xl font-bold mb-8 text-gray-900"
             >
               Featured Videos
@@ -238,7 +238,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="relative aspect-video bg-gray-100 border border-gray-200 rounded-lg"
                 >
                   <div className="absolute inset-0 flex items-center justify-center">

@@ -52,7 +52,7 @@ export default function CaseStudiesPage() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-8">
@@ -74,7 +74,7 @@ export default function CaseStudiesPage() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
               >
                 <Link
                   href={`/case-studies/${study.id}`}

@@ -79,7 +79,7 @@ export default function PortfolioPage() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-8 text-gray-900">
@@ -130,7 +130,7 @@ export default function PortfolioPage() {
                   key={item.id}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  transition={{ duration: 0.25, delay: index * 0.03 }}
                   onHoverStart={() => setHoveredIndex(index)}
                   onHoverEnd={() => setHoveredIndex(null)}
                   onClick={() => setSelectedVideo(item)}

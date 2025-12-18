@@ -102,12 +102,12 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="text-sm uppercase tracking-[0.3em] text-gray-600 mb-6"
           >
             Creative Media Agency
@@ -137,7 +137,7 @@ export default function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
             className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed transition-colors duration-300 text-gray-600 font-semibold bg-white/80 backdrop-blur-sm px-6 py-4 rounded-lg inline-block"
           >
             Transforming visions into cinematic reality through premium videography, 
@@ -147,7 +147,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <Link
@@ -185,7 +185,7 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        transition={{ delay: 0.6, duration: 0.4 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div

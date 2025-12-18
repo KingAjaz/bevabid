@@ -31,7 +31,7 @@ export default function Navigation() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }}
+      transition={{ duration: 0.3, ease: [0.6, -0.05, 0.01, 0.99] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm' : 'bg-transparent'
       }`}

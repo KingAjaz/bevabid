@@ -45,7 +45,7 @@ export default function ContactPage() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-8 text-gray-900">
@@ -66,7 +66,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
               className="space-y-8"
             >
               <div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="lg:col-span-2"
             >
               <form onSubmit={handleSubmit} className="space-y-6">

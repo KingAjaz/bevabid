@@ -37,7 +37,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-5xl md:text-6xl font-bold mb-8 text-gray-900"
         >
           Ready to Create Something
@@ -48,7 +48,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
         >
           Let's collaborate to bring your vision to life with cinematic excellence and creative innovation.
@@ -58,7 +58,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           <Link
             href="/contact"

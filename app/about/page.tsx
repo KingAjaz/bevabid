@@ -19,7 +19,7 @@ export default function AboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="max-w-4xl mx-auto px-6 lg:px-8 text-center"
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-8 text-gray-900">
@@ -39,7 +39,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Our Story</h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
@@ -65,7 +65,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="relative aspect-square bg-white/5 border border-white/10"
             >
               {/* Placeholder for image */}
@@ -85,7 +85,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-red">Our Vision</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
@@ -99,7 +99,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-red">Our Mission</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
@@ -120,7 +120,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">Our Values</h2>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="p-8 bg-white/5 border border-white/10 hover:border-primary-red/50 transition-all"
               >
                 <h3 className="text-2xl font-bold mb-4 text-gray-900">{value.title}</h3>
