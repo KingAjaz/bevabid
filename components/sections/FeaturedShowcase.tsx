@@ -1,34 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { Play, ArrowRight } from 'lucide-react';
-
-// Dummy video data - replace with Supabase data later
-const featuredVideos = [
-  {
-    id: 1,
-    title: 'Luxury Brand Campaign',
-    category: 'Videography',
-    thumbnail: '/api/placeholder/800/450',
-    videoUrl: '#',
-  },
-  {
-    id: 2,
-    title: 'Product Launch Animation',
-    category: 'Animation',
-    thumbnail: '/api/placeholder/800/450',
-    videoUrl: '#',
-  },
-  {
-    id: 3,
-    title: 'Architectural CGI',
-    category: 'CGI',
-    thumbnail: '/api/placeholder/800/450',
-    videoUrl: '#',
-  },
-];
+import { supabase } from '@/lib/supabase';
 
 export default function FeaturedShowcase() {
   const ref = useRef<HTMLDivElement>(null);
@@ -39,6 +15,32 @@ export default function FeaturedShowcase() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [videos, setVideos] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchFeaturedVideos() {
+      try {
+        const { data, error } = await supabase
+          .from('videos')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (error) {
+          console.error('Error fetching featured videos:', error);
+          return;
+        }
+
+        if (data) {
+          setVideos(data);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    fetchFeaturedVideos();
+  }, []);
 
   return (
     <section
@@ -65,7 +67,7 @@ export default function FeaturedShowcase() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredVideos.map((video, index) => (
+          {videos.map((video, index) => (
             <motion.div
               key={video.id}
               initial={{ opacity: 0, y: 50 }}
@@ -77,9 +79,29 @@ export default function FeaturedShowcase() {
               className="group relative overflow-hidden cursor-pointer"
             >
               <div className="relative aspect-video bg-gray-100 overflow-hidden rounded-lg">
-                {/* Placeholder for video thumbnail */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300" />
-                
+                {/* Thumbnail / Video Poster */}
+                <div className="relative w-full h-full">
+                  {video.video_url && video.video_url !== '#' ? (
+                    <video
+                      src={video.video_url}
+                      poster={video.thumbnail_url || undefined}
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ pointerEvents: 'none' }}
+                    />
+                  ) : video.thumbnail_url ? (
+                    <img
+                      src={video.thumbnail_url}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300" />
+                  )}
+                </div>
+
                 {/* Play Button Overlay */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -135,4 +157,3 @@ export default function FeaturedShowcase() {
     </section>
   );
 }
-
