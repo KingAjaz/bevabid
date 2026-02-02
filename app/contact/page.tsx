@@ -18,17 +18,33 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // TODO: Integrate with Supabase or email service
-    // For now, just simulate submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
+
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', company: '', message: '' });
-      
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -84,10 +100,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:hello@bevabid.com"
+                      href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@bevabid.com'}`}
                       className="text-gray-600 hover:text-primary-red transition-colors"
                     >
-                      hello@bevabid.com
+                      {process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@bevabid.com'}
                     </a>
                   </div>
                 </div>
@@ -99,10 +115,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
                     <a
-                      href="tel:+1234567890"
+                      href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE?.replace(/[^0-9+]/g, '') || '+1234567890'}`}
                       className="text-gray-600 hover:text-primary-red transition-colors"
                     >
-                      +1 (234) 567-890
+                      {process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1 (234) 567-890'}
                     </a>
                   </div>
                 </div>
@@ -114,8 +130,16 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-gray-600">
-                      123 Creative Street<br />
-                      Design District, NY 10001
+                      {process.env.NEXT_PUBLIC_CONTACT_ADDRESS ? (
+                        process.env.NEXT_PUBLIC_CONTACT_ADDRESS.split('|').map((line, i) => (
+                          <span key={i} className="block mb-4 last:mb-0">{line.trim()}</span> // Added margin-bottom for visual separation
+                        ))
+                      ) : (
+                        <>
+                          123 Creative Street<br />
+                          Design District, NY 10001
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>

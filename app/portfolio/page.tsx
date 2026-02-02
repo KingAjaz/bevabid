@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, X, Filter } from 'lucide-react';
+import { Play, X, Filter, ArrowRight } from 'lucide-react';
 import VideoModal from '@/components/VideoModal';
 import { supabase } from '@/lib/supabase';
 
@@ -100,11 +100,10 @@ export default function PortfolioPage() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 text-sm font-semibold uppercase tracking-wider transition-all ${
-                  selectedCategory === category
-                    ? 'bg-primary-red text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
-                }`}
+                className={`px-6 py-2 text-sm font-semibold uppercase tracking-wider transition-all ${selectedCategory === category
+                  ? 'bg-primary-red text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
+                  }`}
               >
                 {category}
               </button>
@@ -123,61 +122,75 @@ export default function PortfolioPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" // Increased gap to match case studies
             >
               {filteredItems.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 50 }} // Increased y offset to match case studies
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25, delay: index * 0.03 }}
                   onHoverStart={() => setHoveredIndex(index)}
                   onHoverEnd={() => setHoveredIndex(null)}
                   onClick={() => setSelectedVideo(item)}
-                  className="group relative cursor-pointer overflow-hidden"
+                  className="group cursor-pointer block h-full" // Removed relative/overflow hidden from wrapper
                 >
-                  <div className="relative aspect-video bg-white/5 overflow-hidden">
-                    {/* Video thumbnail */}
-                    {item.thumbnail && item.thumbnail !== '/api/placeholder/800/450' ? (
-                      <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/50" />
-                    )}
+                  {/* Thumbnail Container - Matching Case Studies Style */}
+                  <div className="relative aspect-video bg-gray-100 border border-gray-200 overflow-hidden mb-6 rounded-lg">
+                    {/* Video Content / Image */}
+                    <div className="relative w-full h-full">
+                      {item.videoUrl && item.videoUrl !== '#' ? (
+                        <video
+                          src={item.videoUrl}
+                          poster={item.thumbnail && item.thumbnail !== '/api/placeholder/800/450' ? item.thumbnail : undefined}
+                          muted
+                          loop
+                          playsInline
+                          className="absolute inset-0 w-full h-full object-cover"
+                          style={{ pointerEvents: 'none' }}
+                        />
+                      ) : item.thumbnail && item.thumbnail !== '/api/placeholder/800/450' ? (
+                        <img
+                          src={item.thumbnail}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300" />
+                      )}
+                    </div>
 
-                    {/* Play Button Overlay */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{
-                        opacity: hoveredIndex === index ? 1 : 0,
-                        scale: hoveredIndex === index ? 1 : 0.8,
-                      }}
-                      className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm"
-                    >
-                      <div className="w-20 h-20 rounded-full bg-primary-red flex items-center justify-center">
-                        <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                      </div>
-                    </motion.div>
-
-                    {/* Category Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-semibold uppercase tracking-wider shadow-sm">
+                    {/* Category Badge - Matching Case Studies Position */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-semibold uppercase tracking-wider shadow-sm rounded">
                         {item.category}
                       </span>
                     </div>
+
+                    {/* Hover Overlay - Matching Case Studies Style (Red tint + Icon) */}
+                    <div className="absolute inset-0 bg-primary-red/0 group-hover:bg-primary-red/20 transition-colors duration-300 flex items-center justify-center z-10">
+                      {/* Using Play instead of Arrow for videos, but keeping the transition style */}
+                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100">
+                        <Play className="w-6 h-6 text-primary-red ml-1" fill="currentColor" />
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Title & Description */}
-                  <div className="mt-6">
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary-red transition-colors">
+                  {/* Content Container - Matching Case Studies Typography */}
+                  <div>
+                    <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-primary-red transition-colors">
                       {item.title}
                     </h3>
                     {item.description && (
-                      <p className="text-sm text-gray-600 line-clamp-2">{item.description}</p>
+                      <p className="text-gray-700 mb-6 leading-relaxed line-clamp-3">
+                        {item.description}
+                      </p>
                     )}
+
+                    {/* View Project Link - visual cue */}
+                    <div className="flex items-center text-primary-red font-semibold uppercase tracking-wider text-sm opacity-60 group-hover:opacity-100 transition-opacity">
+                      Watch Video <ArrowRight className="w-4 h-4 ml-2" />
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -198,4 +211,3 @@ export default function PortfolioPage() {
     </div>
   );
 }
-

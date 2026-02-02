@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-email/components": "^1.0.6",
+    "@react-email/tailwind": "^2.0.3",
     "@supabase/supabase-js": "^2.39.0",
     "framer-motion": "^11.0.0",
     "gsap": "^3.12.5",
@@ -17,6 +19,7 @@
     "postprocessing": "^6.38.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "resend": "^6.9.1",
     "three": "0.181.2"
   },
   "devDependencies": {
